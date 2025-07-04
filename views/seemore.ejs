@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("head") %>
+</head>
+<body>
+    <%- include("header") %>
+
+    <div class="container">
+        <h1>All Posts</h1>
+
+        <% if (posts.length > 0) { %>
+            <% posts.forEach((item) => { %>
+                <p><%= item.post %></p>
+
+                
+                <form  method="POST" action="/delete/<%= item._id %>" style="display:inline;">
+                    <button type="submit" class="delete-btn">Delete Post</button>
+                </form>
+
+                
+                <form method="GET" action="/edit/<%= item._id %>" style="display:inline;">
+                    <button type="submit" class="post-btn">Edit Post</button>
+                </form>
+                
+            <% }) %>
+        <% } else { %>
+            <p>No posts found.</p>
+        <% } %>
+    </div>
+</body>
+</html>
